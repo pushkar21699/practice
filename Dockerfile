@@ -3,5 +3,5 @@ WORKDIR /app
 
 RUN npm install nodejs
 COPY . /app
-CMD node server1.js
-EXPOSE 3000
+CMD node server.js
+EXPOSE 8081
