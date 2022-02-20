@@ -1,0 +1,189 @@
+<!-- effects in jQuery -->
+<!-- more info : https://www.w3schools.com/jquery/jquery_ref_effects.asp -->
+<html>
+
+<head>
+    <!-- attached jquery file to html -->
+    <script src="jquery-3.6.0.min.js"></script>
+    <script>
+
+        // 1.select html Element
+        // 2.perform jquery function or action on selected element
+
+        // we can use css selector
+        // e.g.
+        // $('#pra').hide();
+        // $(selector).action();
+
+
+        $(document).ready(function () {
+
+            //hide(): 
+            //$(selector).hide(speed,easing,callback)
+            // speed : in time , dpeed of hide and show
+            // easing : Specifies the speed of the element in different points of the animation. 
+            // callback function; A function to be executed after the hide() method is completed
+            //when click on button1 it will hide the div 
+            $('#btn1').click(function () {
+                //hide in 1 sec
+                $('#colored_div').hide(1000); //time in ms
+            });
+            //when click on button click it will show div
+            $('#btn2').click(function () {
+                //show in 2 sec
+                $('#colored_div').show(2000); //2sec
+            });
+
+            //toggle between hide and show
+
+            //fadeIn : it will display/appear slowly just like show
+            // The fadeIn() method gradually changes the opacity, for selected elements, from hidden to visible (fading effect).
+            //fadeOut:  it will disappear slowly just like hide
+
+            //when click on button1 it will fadeIn the div 
+            $('#btn3').click(function () {
+                //it will show gradually from hiddent to show
+                $('#colored_div').fadeIn(1000); //time in ms
+            });
+            //when click on button click it will fadeOut div
+            $('#btn4').click(function () {
+                //it will disapper from show to hide gradually
+                $('#colored_div').fadeOut(2000); //2sec
+            });
+
+
+
+            //fadetoggle : use for toggle the fadeIn and FadeOut  
+            // if fadeIn then it will fadeOut and viceversa
+            $('#btn5').click(function () {
+                $('#colored_div').fadeToggle(1000); //time in ms
+            });
+
+
+            //fadeto : it will use for to adjust the opacity(transparancy)
+            //    The fadeTo() method gradually changes the opacity, for selected elements, to a specified opacity (fading effect).
+            $('#btn6').click(function () {
+                //second parameter for adjust the opacity/transparency : 0.3 means it will show 30% opacity(transapcrency)
+                // and 70% will hide
+                // 1: show totally
+                // 0: hide 
+                //opacity(transparncy) : Specifies the opacity to fade to. Must be a number between 0.00 and 1.00
+                $('#colored_div').fadeTo(2000, 0.4); //2sec
+            });
+
+            //sliding effect : 
+            //$(selector).slideUp(speed,easing,callback)
+            // Specifies the speed of the slide effect. Default value is 400 milliseconds
+            //1.slideUp:(hides) the selected elements
+            $('#btn7').click(function () {
+                $('#colored_div').slideUp(1000); //time in ms
+            });
+
+            //2.slideDown: (shows) the selected elements
+            $('#btn8').click(function () {
+                $('#colored_div').slideDown(1000); //time in ms
+            });
+
+            //3.slidetoggle : Toggles between the slideUp() and slideDown() methods
+            $('#btn9').click(function () {
+                $('#colored_div').slideToggle(1000); //time in ms
+            });
+
+
+            //animation:  we can give all css properties here for animation
+            //animate(): Runs a custom animation on the selected elements
+            //         The animate() method performs a custom animation of a set of CSS properties.
+            // This method changes an element from one state to another with CSS styles. The CSS property value is changed gradually, to create an animated effect.
+            // Only numeric values can be animated (like "margin:30px"). String values cannot be animated (like "background-color:red"), except for the strings "show", "hide" and "toggle". These values allow hiding and showing the animated element.
+            // Tip: Use "+=" or "-=" for relative animations.
+            // Syntax
+            // (selector).animate({styles},speed,easing,callback)
+            // styles : Specifies one or more CSS properties/values to animate.
+            //speed : time to complete the animation
+            //when click on button it will give animation for a elements
+            // e.g. if we cclick on button it will give animation to div tag
+
+            $('#btn10').click(function () {
+                $('#colored_div').animate({
+                    opacity: '0.5',
+                    height: '200px',
+                    width: '50px'
+                },5000); //5000ms means animation will complete in 5 sec
+            });
+
+//stop() : it will with all effects like fadein ,fadeOut.....,animate
+//while performing animation it will stop that animation
+//when we click on animation button again it will resume the aniamtion where it was stop
+//when click on button it will stop animation of div tag
+$('#btn11').click(function(){
+    $('#colored_div').stop();
+});
+
+
+//callback function : it will used to exceucted after completing the effects()
+// i.e A function to be executed after the animation completes
+//all effects methods we can use callBaack function after speed(time) parameter
+
+//when we click on button it will hide the div tag and
+// after hiding div tag , the callback funcction will execute
+// it will hide div tag in 3 sec after this callback function execute
+$('#btn12').click(function(){
+    $('#colored_div').hide(3000,function(){
+        alert('div is hidden');
+    });
+});
+//important: 
+//channing : we can apply multiple effects on single element
+// With jQuery, you can chain together actions/methods.
+// Chaining allows us to run multiple jQuery methods (on the same element) within a single statement.
+// we apply cahining using dot(.)
+//use dot after the method to chaiining the effects
+
+// e.g when click on button div background will change and slideup effects will apply
+
+$('#btn13').click(function(){
+    //it will change baclkground color of div to red and
+    //then will apply slideup effetcs
+    //after css() we use dot(.) for channing the next methods
+    $('#colored_div').css('background-color','red').slideUp(2000).slideDown(1000);
+
+    // or u can like this for simplicity
+    // $('#colored_div').css('background-color','red')
+    // .slideUp(2000)
+    // .slideDown(1000);
+});
+
+
+
+
+
+
+
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <p>this is p tag</p>
+    <button id="btn1">hide</button>
+    <button id="btn2">show</button>
+    <button id="btn3">fadeIn</button>
+    <button id="btn4">fadeOut</button>
+    <button id="btn5">fadeToggle</button>
+    <button id="btn6">fadeTo</button>
+    <button id="btn7">slideUp</button>
+    <button id="btn8">slideDown</button>
+    <button id="btn9">slideToggle</button>
+    <button id="btn10">animation</button>
+    <button id="btn11">stop Animation</button>
+    <button id="btn12">callback function</button>
+    <button id="btn13">channing</button>
+
+
+    <br><br>
+    <div id="colored_div" style="background-color: brown; height: 100px; width: 100px"></div>
+</body>
+
+</html>
